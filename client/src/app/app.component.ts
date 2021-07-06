@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
   constructor( private httpClient: HttpClient) {}
   async ngOnInit() {
 
-    var r = await this.httpClient.get('/api/HttpExample').toPromise();
-    console.log('r',r);
+    var apiUser = await this.httpClient.get('/api/HttpExample').toPromise();
+    console.log('user from our API call',apiUser);
 
-    var r = await this.httpClient.get('/.auth/me').toPromise();
-    console.log('r',r);
+    var authMe = await this.httpClient.get('/.auth/me').toPromise();
+    console.log('user from ./auth/me',authMe);
     
   }
   title = 'AuthTest';

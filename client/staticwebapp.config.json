@@ -1,9 +1,30 @@
 {
     "routes": [
-      {
-        "route": "/*",
-        "serve": "/index.html",
-        "statusCode": 200
-      }
-    ]
-  }
+        {
+            "route": "/*",
+            "serve": "/index.html",
+            "statusCode": 200
+        }
+    ],
+    "auth": {
+        "identityProviders": {
+            "customOpenIdConnectProviders": {
+                "auth0": {
+                    "registration": {
+                        "clientIdSettingName": "AUTH0ID",
+                        "clientCredential": {
+                            "clientSecretSettingName": "AUTH0SECRET"
+                        },
+                        "openIdConnectConfiguration": {
+                            "wellKnownOpenIdConfiguration": "https://home-start-bradford.eu.auth0.com/.well-known/openid-configuration"
+                        }
+                    },
+                    "login": {
+                        "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                        "scopes": ["openid", "profile"]
+                    }
+                }
+            }
+        }
+    }
+}
