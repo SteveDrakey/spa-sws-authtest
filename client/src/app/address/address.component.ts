@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -85,9 +86,12 @@ export class AddressComponent {
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private httpClient: HttpClient) {
+    
+  }
 
-  onSubmit(): void {
-    alert('Thanks!');
+  async onSubmit()  {
+    var r = await this.httpClient.get('/api/HttpExample').toPromise();
+    console.log('r',r);
   }
 }
